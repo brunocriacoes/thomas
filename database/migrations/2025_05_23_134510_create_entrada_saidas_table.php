@@ -11,14 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('entrada_saidas', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('escola_id')->constrained('escolas')->cascadeOnDelete();
-            $table->foreignId('aluno_id')->constrained('alunos')->cascadeOnDelete();
-            $table->dateTime('hora_entrada');
-            $table->dateTime('hora_saida')->nullable();
-            $table->timestamps();
-        });
+        
     }
 
     /**
