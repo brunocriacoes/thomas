@@ -29,7 +29,7 @@ class ResponsavelAlunoResource extends Resource
                     ->relationship('usuario', 'name')
                     ->required(),
                 Forms\Components\Select::make('aluno_id')
-                    ->relationship('aluno', 'id')
+                    ->relationship('aluno', 'nome')
                     ->required(),
                 Forms\Components\TextInput::make('parentesco')
                     ->required(),

@@ -26,7 +26,7 @@ class ProdutoEventoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('evento_id')
-                    ->relationship('evento', 'id')
+                    ->relationship('evento', 'nome')
                     ->required(),
                 Forms\Components\TextInput::make('url_foto'),
                 Forms\Components\TextInput::make('nome')

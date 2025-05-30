@@ -29,7 +29,7 @@ class CompraEventoResource extends Resource
                     ->relationship('usuario', 'name')
                     ->required(),
                 Forms\Components\Select::make('evento_id')
-                    ->relationship('evento', 'id')
+                    ->relationship('evento', 'nome')
                     ->required(),
                 Forms\Components\DateTimePicker::make('data_compra')
                     ->required(),

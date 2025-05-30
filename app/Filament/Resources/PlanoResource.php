@@ -26,7 +26,7 @@ class PlanoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('escola_id')
-                    ->relationship('escola', 'id')
+                    ->relationship('escola', 'nome')
                     ->required(),
                 Forms\Components\TextInput::make('nome')
                     ->required(),

@@ -26,10 +26,10 @@ class EntradaSaidaResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('escola_id')
-                    ->relationship('escola', 'id')
+                    ->relationship('escola', 'nome')
                     ->required(),
                 Forms\Components\Select::make('aluno_id')
-                    ->relationship('aluno', 'id')
+                    ->relationship('aluno', 'nome')
                     ->required(),
                 Forms\Components\DateTimePicker::make('hora_entrada')
                     ->required(),

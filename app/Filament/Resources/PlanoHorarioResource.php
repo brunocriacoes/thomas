@@ -26,7 +26,7 @@ class PlanoHorarioResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('plano_id')
-                    ->relationship('plano', 'id')
+                    ->relationship('plano', 'nome')
                     ->required(),
                 Forms\Components\TextInput::make('dia_semana')
                     ->required(),

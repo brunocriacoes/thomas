@@ -35,7 +35,7 @@ class UserResource extends Resource
                     ->password()
                     ->required(),
                 Forms\Components\Select::make('escola_id')
-                    ->relationship('escola', 'id'),
+                    ->relationship('escola', 'nome'),
             ]);
     }
 

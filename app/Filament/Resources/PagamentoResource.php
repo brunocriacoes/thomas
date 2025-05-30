@@ -29,11 +29,11 @@ class PagamentoResource extends Resource
                     ->relationship('usuario', 'name')
                     ->required(),
                 Forms\Components\Select::make('aluno_id')
-                    ->relationship('aluno', 'id'),
+                    ->relationship('aluno', 'nome'),
                 Forms\Components\Select::make('plano_id')
-                    ->relationship('plano', 'id'),
+                    ->relationship('plano', 'nome'),
                 Forms\Components\Select::make('evento_id')
-                    ->relationship('evento', 'id'),
+                    ->relationship('evento', 'nome'),
                 Forms\Components\TextInput::make('tipo')
                     ->required(),
                 Forms\Components\TextInput::make('valor')
