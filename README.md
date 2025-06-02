@@ -102,3 +102,15 @@ php artisan lang:add pt_BR
 ~~~
 php artisan storage:link
 ~~~
+
+### reflesh
+
+~~~
+php artisan migrate:fresh
+~~~
+
+### Seed
+
+~~~
+php artisan db:seed --class=DatabaseSeeder
+~~~

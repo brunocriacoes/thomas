@@ -4,18 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\User;
 
 class Escola extends Model
 {
     protected $fillable = [
         'nome',
+        'url_logo',
+        'url_arte',
         'cnpj',
-        'logo_url',
-        'cor_primaria',
-        'cor_secundaria',
-        'dominio',
-        'status'
+        'telefone',
+        'email',
+        'faturamento',
+        'tipo_escola',
+        'url_site',
+        'url_google_map',
+        'url_instagran',
+        'status',
+        'cep',
+        'endereco',
+        'numero',
+        'bairro',
+        'cidade',
+        'estado',
     ];
 
     public function usuarios(): HasMany

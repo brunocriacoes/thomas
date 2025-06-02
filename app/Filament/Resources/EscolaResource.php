@@ -26,18 +26,56 @@ class EscolaResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nome')
-                    ->required(),
+                    ->required()
+                    ->columnSpan(2),
+                Forms\Components\FileUpload::make('url_logo')
+                    ->nullable()
+                    ->image(),
+                Forms\Components\FileUpload::make('url_arte')
+                    ->nullable()
+                    ->image(),
                 Forms\Components\TextInput::make('cnpj')
+                    ->required()
+                    ->mask('99.999.999/9999-99'),
+                Forms\Components\TextInput::make('telefone')
+                    ->nullable()
+                    ->mask('(99) 99999-9999'),
+                Forms\Components\TextInput::make('email')
+                    ->nullable(),
+                Forms\Components\TextInput::make('faturamento')
+                    ->numeric()
+                    ->nullable(),
+                Forms\Components\Select::make('tipo_escola')
+                    ->options([
+                        'Infantil' => 'Infantil',
+                        'Futebol' => 'Futebol',
+                        'Futvoley' => 'Futvoley',
+                        'Jiu-Jitsu' => 'Jiu-Jitsu',
+                        'Natação' => 'Natação',
+                    ])
                     ->required(),
-                Forms\Components\TextInput::make('logo_url'),
-                Forms\Components\TextInput::make('cor_primaria')
-                    ->required(),
-                Forms\Components\TextInput::make('cor_secundaria')
-                    ->required(),
-                Forms\Components\TextInput::make('dominio')
-                    ->required(),
+                Forms\Components\TextInput::make('url_site')
+                    ->nullable(),
+                Forms\Components\TextInput::make('url_google_map')
+                    ->nullable(),
+                Forms\Components\TextInput::make('url_instagran')
+                    ->nullable(),
                 Forms\Components\Toggle::make('status')
+                    ->columnSpan(2)
                     ->required(),
+                Forms\Components\TextInput::make('cep')
+                    ->mask('99999-999')
+                    ->nullable(),
+                Forms\Components\TextInput::make('endereco')
+                    ->nullable(),
+                Forms\Components\TextInput::make('numero')
+                    ->nullable(),
+                Forms\Components\TextInput::make('bairro')
+                    ->nullable(),
+                Forms\Components\TextInput::make('cidade')
+                    ->nullable(),
+                Forms\Components\TextInput::make('estado')
+                    ->nullable(),
             ]);
     }
 
@@ -47,18 +85,40 @@ class EscolaResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nome')
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('url_logo')
+                    ->searchable(),
+                Tables\Columns\ImageColumn::make('url_arte')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('cnpj')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('logo_url')
+                Tables\Columns\TextColumn::make('telefone')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('cor_primaria')
+                Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('cor_secundaria')
+                Tables\Columns\TextColumn::make('faturamento')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('dominio')
+                Tables\Columns\TextColumn::make('tipo_escola')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('url_site')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('url_google_map')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('url_instagran')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('status')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('cep')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('endereco')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('numero')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('bairro')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cidade')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('estado')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
