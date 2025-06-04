@@ -24,10 +24,27 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        
         'escola_id',
-        'foto_url',
         'telefone',
-        'tipo'
+        'foto',
+        'genero',
+        'estado_civil',
+        'parentesco',
+        'status',
+        'escola_id',
+        'cpf',
+        'rg',
+        'endereco',
+        'numero',
+        'bairro',
+        'cidade',
+        'estado',
+        'cep',
+        'nacionalidade',
+        'profissao',
+        'cargo',
+        'observacoes'
     ];
 
     /**

@@ -16,26 +16,84 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-user';
     
-    protected static ?string $navigationGroup = 'Usuários';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
+
+    protected static ?string $navigationGroup = 'Cadastro de Pessoas';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('foto')
+                    ->image()
+                    ->columnSpan(2),
                 Forms\Components\TextInput::make('name')
                     ->required(),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required(),
+                Forms\Components\TextInput::make('telefone')
+                    ->tel()
+                    ->mask('(99) 99999-9999'),
+
+                Forms\Components\Select::make('genero')
+                    ->options([
+                        'masculino' => 'Masculino',
+                        'feminino' => 'Feminino',
+                        'não_binário' => 'Não Binário',
+                        'prefiro_não_informar' => 'Prefiro Não Informar',
+                        'outro' => 'Outro',
+                    ])
+                    ->nullable(),
+                Forms\Components\Select::make('estado_civil')
+                    ->options([
+                        'solteiro' => 'Solteiro',
+                        'casado' => 'Casado',
+                        'divorciado' => 'Divorciado',
+                        'viuvo' => 'Viúvo',
+                    ])
+                    ->nullable(),
+                Forms\Components\Select::make('parentesco')
+                    ->options([
+                        'pai' => 'Pai',
+                        'mãe' => 'Mãe',
+                        'tutor' => 'Tutor',
+                        'outro' => 'Outro',
+                    ])
+                    ->nullable(),
+                Forms\Components\TextInput::make('profissao'),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'ativo' => 'Ativo',
+                        'inativo' => 'Inativo',
+                        'suspenso' => 'Suspenso',
+                    ])
+                    ->default('ativo')
+                    ->required(),
                 Forms\Components\Select::make('escola_id')
-                    ->relationship('escola', 'nome'),
+                    ->relationship('escola', 'nome')
+                    ->nullable(),
+                Forms\Components\TextInput::make('cpf')
+                    ->mask('999.999.999-99'),
+                Forms\Components\TextInput::make('rg')
+                    ->mask('99.999.999-9'),
+                Forms\Components\TextInput::make('cep')->mask('99999-999'),
+                Forms\Components\TextInput::make('endereco'),
+                Forms\Components\TextInput::make('numero'),
+                Forms\Components\TextInput::make('bairro'),
+                Forms\Components\TextInput::make('cidade'),
+                Forms\Components\TextInput::make('estado'),
+
+                Forms\Components\TextInput::make('nacionalidade')
+                    ->columnSpan(2),
+                Forms\Components\RichEditor::make('observacoes')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('cargo')
+                    ->nullable(),
             ]);
     }
 
@@ -58,9 +116,43 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('escola.id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('telefone')
+                    ->searchable(),
+                Tables\Columns\ImageColumn::make('foto'),
+                Tables\Columns\TextColumn::make('genero')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('estado_civil')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('parentesco')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('escola.nome')
+                    ->label('Escola')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cpf')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('rg')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('endereco')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('numero')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('bairro')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cidade')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('estado')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cep')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('nacionalidade')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('profissao')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cargo')
+                    ->searchable(),
             ])
             ->filters([
                 //

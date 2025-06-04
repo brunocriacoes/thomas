@@ -22,7 +22,7 @@ class AlunoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $navigationGroup = 'Usuários';
+    protected static ?string $navigationGroup = 'Cadastro de Pessoas';
 
     public static function form(Form $form): Form
     {
@@ -68,7 +68,7 @@ class AlunoResource extends Resource
                 Tables\Columns\TextColumn::make('data_nascimento')
                     ->date()
                     ->sortable(),
-                    ToggleColumn::make('status'),
+                ToggleColumn::make('status'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

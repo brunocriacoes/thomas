@@ -114,3 +114,8 @@ php artisan migrate:fresh
 ~~~
 php artisan db:seed --class=DatabaseSeeder
 ~~~
+
+### migration seed
+~~~
+php artisan migrate:fresh --seed
+~~~

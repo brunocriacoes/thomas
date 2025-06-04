@@ -19,7 +19,7 @@ class EscolaResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
-    protected static ?string $navigationGroup = 'Usuários';
+    protected static ?string $navigationGroup = 'Cadastro da escola';
 
     public static function form(Form $form): Form
     {
