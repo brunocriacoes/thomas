@@ -12,9 +12,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\FileUpload;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\ToggleColumn;
 
 class AlunoResource extends Resource
 {
@@ -28,25 +25,60 @@ class AlunoResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('foto')
+                    ->image()
+                    ->columnSpan(2),
+                Forms\Components\TextInput::make('nome')
+                    ->required(),
+                Forms\Components\Select::make('genero')
+                    ->options([
+                        'masculino' => 'Masculino',
+                        'feminino' => 'Feminino',
+                        'outro' => 'Outro',
+                    ])
+                    ->required(),
+                Forms\Components\DatePicker::make('data_de_nascimento')
+                    ->required(),
+                Forms\Components\TextInput::make('nacionalidade'),
+                Forms\Components\TextInput::make('cpf')
+                    ->required(),
+                Forms\Components\TextInput::make('rg'),
+                Forms\Components\TextInput::make('plano_de_saude'),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'ativo' => 'Ativo',
+                        'inativo' => 'Inativo',
+                    ])
+                    ->default('ativo')
+                    ->required(),
+                Forms\Components\TextInput::make('cep')
+                    ->columnSpan(2)
+                    ->required(),
+                Forms\Components\TextInput::make('rua')
+                    ->required(),
+                Forms\Components\TextInput::make('numero')
+                    ->required(),
+                Forms\Components\TextInput::make('cidade')
+                    ->required(),
+                Forms\Components\TextInput::make('estado')
+                    ->required(),
+
+
+
+                Forms\Components\RichEditor::make('alergias')
+                    ->columnSpanFull(),
+
+                Forms\Components\RichEditor::make('observacao')
+                    ->columnSpanFull(),
                 Forms\Components\Select::make('escola_id')
                     ->relationship('escola', 'nome')
                     ->required(),
-                Forms\Components\Select::make('plano_id')
-                    ->relationship('plano', 'nome')
-                    ->required(),
-                Forms\Components\TextInput::make('nome')
-                    ->required(),
-                Forms\Components\DatePicker::make('data_nascimento')
-                    ->required(),
-                FileUpload::make('foto_url')
-                    ->image()
-                    ->columnSpan(2)
-                    ->directory('alunos')
-                    ->disk('public')
-                    ->imagePreviewHeight('250')
-                    ->required(),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
+
+                    
+                Forms\Components\Select::make('quem_pode_buscar')
+                    ->relationship('quemPodeBuscar', 'name')
+                    ->nullable(),
+
             ]);
     }
 
@@ -54,22 +86,41 @@ class AlunoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('escola.nome')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('plano.nome')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('nome')
                     ->searchable(),
-                ImageColumn::make('foto_url')
-                    ->width(100)
-                    ->circular(),
-                Tables\Columns\TextColumn::make('data_nascimento')
+                Tables\Columns\TextColumn::make('genero')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('data_de_nascimento')
                     ->date()
                     ->sortable(),
-                ToggleColumn::make('status'),
-
+                Tables\Columns\TextColumn::make('cep')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('rua')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('numero')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cidade')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('estado')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('nacionalidade')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cpf')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('rg')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('plano_de_saude')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('quem_pode_buscar')
+                    ->label('Quem Pode Buscar')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\ImageColumn::make('foto'),
+                Tables\Columns\TextColumn::make('escola_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
