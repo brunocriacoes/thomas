@@ -2,28 +2,41 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Plano extends Model
 {
+    use HasFactory;
+
+    protected $table = 'planos';
+
     protected $fillable = [
-        'escola_id',
-        'nome',
         'periodo',
-        'horas_inclusas',
-        'valor_mensal',
-        'valor_hora_extra'
+        'turno_hora',
+        'turno_preco_hora',
+        'socializacao_hora',
+        'socializacao_preco_hora',
+        'ecola_id',
+        'user_id',
+        'aluno_id',
+        'valor',
+        'status',
+        'observacao',
     ];
 
-    public function escola(): BelongsTo
+    public function escola()
     {
-        return $this->belongsTo(Escola::class);
+        return $this->belongsTo(Escola::class, 'ecola_id');
     }
 
-    public function horarios(): HasMany
+    public function user()
     {
-        return $this->hasMany(PlanoHorario::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function aluno()
+    {
+        return $this->belongsTo(Aluno::class);
     }
 }

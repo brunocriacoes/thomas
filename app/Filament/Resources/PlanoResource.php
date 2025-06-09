@@ -19,28 +19,49 @@ class PlanoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-arrow-trending-up';
 
-    protected static ?string $navigationGroup = 'Planos';
+    protected static ?string $navigationGroup = 'Financeiro';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('escola_id')
+                Forms\Components\Select::make('periodo')
+                    ->options([
+                        'manha' => 'Manhã',
+                        'tarde' => 'Tarde',
+                    ])
+                    ->required(),
+                Forms\Components\TextInput::make('valor')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('turno_hora')
+                    ->numeric(),
+                Forms\Components\TextInput::make('turno_preco_hora')
+                    ->numeric(),
+                Forms\Components\TextInput::make('socializacao_hora')
+                    ->numeric(),
+                Forms\Components\TextInput::make('socializacao_preco_hora')
+                    ->numeric(),
+                Forms\Components\Select::make('ecola_id')
                     ->relationship('escola', 'nome')
+                    ->nullable(),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->nullable(),
+                Forms\Components\Select::make('aluno_id')
+                    ->relationship('aluno', 'nome')
+                    ->nullable(),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'ativo' => 'Ativo',
+                        'inativo' => 'Inativo',
+                        'pendente' => 'Pendente',
+                        'cancelado' => 'Cancelado',
+                    ])
                     ->required(),
-                Forms\Components\TextInput::make('nome')
-                    ->required(),
-                Forms\Components\TextInput::make('periodo')
-                    ->required(),
-                Forms\Components\TextInput::make('horas_inclusas')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('valor_mensal')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('valor_hora_extra')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\RichEditor::make('observacao')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -48,22 +69,38 @@ class PlanoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('escola.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('nome')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('periodo')
+                    ->label('Período')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('horas_inclusas')
+                Tables\Columns\TextColumn::make('turno_hora')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('valor_mensal')
+                Tables\Columns\TextColumn::make('turno_preco_hora')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('valor_hora_extra')
+                Tables\Columns\TextColumn::make('socializacao_hora')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('socializacao_preco_hora')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('ecola_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('user_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('aluno_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('valor')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
