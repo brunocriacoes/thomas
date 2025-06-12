@@ -77,8 +77,4 @@ class User extends Authenticatable
         return $this->belongsTo(Escola::class);
     }
 
-    public function responsaveisAlunos(): HasMany
-    {
-        return $this->hasMany(ResponsavelAluno::class);
-    }
 }
