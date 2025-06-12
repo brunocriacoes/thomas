@@ -6,29 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('mesa_eventos', function (Blueprint $table) {
+        Schema::create('mesas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('evento_id')->constrained('eventos')->cascadeOnDelete();
-            $table->foreignId('reservado_por')->nullable()->constrained('users')->nullOnDelete();
-            $table->string('codigo')->unique();
-            $table->integer('lugares');
-            $table->decimal('preco', 10, 2);
-            $table->string('area');
-            $table->string('status_pagamento')->default('pendente');
+            $table->unsignedBigInteger('evento_id');
+            $table->string('url_foto')->nullable();
+            $table->integer('quantidade_cadeiras')->default(0);
+            $table->enum('localizacao', ['2°Andar', 'Térreo'])->nullable();
+            $table->decimal('preco', 10, 2)->default(0.00);
+            $table->enum('area', ['coberta', 'descoberta'])->nullable();
+            $table->string('numero_mesa');
             $table->timestamps();
+
+            $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('mesa_eventos');
+        Schema::dropIfExists('mesas');
     }
 };

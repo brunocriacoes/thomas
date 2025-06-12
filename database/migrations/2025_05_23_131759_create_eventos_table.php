@@ -6,27 +6,30 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('escola_id')->constrained('escolas')->cascadeOnDelete();
+            $table->unsignedBigInteger('escola_id');
             $table->string('nome');
             $table->text('descricao')->nullable();
-            $table->string('imagem_url')->nullable();
-            $table->dateTime('data_inicio');
-            $table->dateTime('data_fim');
-            $table->integer('andar');
+            $table->date('data_inicio')->nullable();
+            $table->date('data_final')->nullable();
+            $table->time('horario_inicio')->nullable();
+            $table->time('horario_final')->nullable();
+            $table->string('telefone')->nullable();
+            $table->string('url_foto_evento')->nullable();
+            $table->string('url_foto_evento_mesa')->nullable();
+            $table->string('link_google_map')->nullable();
+            $table->string('link_caralogo')->nullable();
+            $table->text('scrip_js')->nullable();
             $table->timestamps();
+
+            $table->foreign('escola_id')->references('id')->on('escolas')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('eventos');

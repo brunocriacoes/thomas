@@ -3,38 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Evento extends Model
 {
+    use HasFactory;
+
+    protected $table = 'eventos';
+
     protected $fillable = [
         'escola_id',
         'nome',
         'descricao',
-        'imagem_url',
         'data_inicio',
-        'data_fim',
-        'andar'
+        'data_final',
+        'horario_inicio',
+        'horario_final',
+        'telefone',
+        'url_foto_evento',
+        'url_foto_evento_mesa',
+        'link_google_map',
+        'link_caralogo',
+        'scrip_js',
     ];
 
-    public function escola(): BelongsTo
+    public function escola()
     {
         return $this->belongsTo(Escola::class);
-    }
-
-    public function mesas(): HasMany
-    {
-        return $this->hasMany(MesaEvento::class);
-    }
-
-    public function produtos(): HasMany
-    {
-        return $this->hasMany(ProdutoEvento::class);
-    }
-
-    public function compras(): HasMany
-    {
-        return $this->hasMany(CompraEvento::class);
     }
 }

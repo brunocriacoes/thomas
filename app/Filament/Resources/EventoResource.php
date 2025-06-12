@@ -25,21 +25,31 @@ class EventoResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('url_foto_evento')
+                    ->image()
+                    ->columnSpan(2),
                 Forms\Components\Select::make('escola_id')
                     ->relationship('escola', 'nome')
                     ->required(),
                 Forms\Components\TextInput::make('nome')
                     ->required(),
-                Forms\Components\Textarea::make('descricao')
+                Forms\Components\RichEditor::make('descricao')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('imagem_url'),
-                Forms\Components\DateTimePicker::make('data_inicio')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('data_fim')
-                    ->required(),
-                Forms\Components\TextInput::make('andar')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\DatePicker::make('data_inicio'),
+                Forms\Components\DatePicker::make('data_final'),
+                Forms\Components\TextInput::make('horario_inicio'),
+                Forms\Components\TextInput::make('horario_final'),
+                Forms\Components\TextInput::make('telefone')
+                    ->tel()
+                    ->columnSpan(2),
+                
+                Forms\Components\FileUpload::make('url_foto_evento_mesa')
+                    ->image()
+                    ->columnSpan(2),
+                Forms\Components\TextInput::make('link_google_map'),
+                Forms\Components\TextInput::make('link_caralogo'),
+                Forms\Components\RichEditor::make('scrip_js')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -47,22 +57,28 @@ class EventoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('escola.id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('escola.nome')
+                    ->label('Escola')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('nome')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('imagem_url')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('data_inicio')
-                    ->dateTime()
+                    ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('data_fim')
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('data_final')
+                    ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('andar')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('horario_inicio'),
+                Tables\Columns\TextColumn::make('horario_final'),
+                Tables\Columns\TextColumn::make('telefone')
+                    ->searchable(),
+                Tables\Columns\ImageColumn::make('url_foto_evento'),
+                Tables\Columns\ImageColumn::make('url_foto_evento_mesa'),
+                Tables\Columns\TextColumn::make('link_google_map')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('link_caralogo')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

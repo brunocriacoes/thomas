@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MesaEventoResource\Pages;
-use App\Filament\Resources\MesaEventoResource\RelationManagers;
-use App\Models\MesaEvento;
+use App\Filament\Resources\MesaResource\Pages;
+use App\Filament\Resources\MesaResource\RelationManagers;
+use App\Models\Mesa;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MesaEventoResource extends Resource
+class MesaResource extends Resource
 {
-    protected static ?string $model = MesaEvento::class;
+    protected static ?string $model = Mesa::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-cube';
 
@@ -25,23 +25,36 @@ class MesaEventoResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('url_foto')
+                    ->image()
+                    ->columnSpan(2),
                 Forms\Components\Select::make('evento_id')
                     ->relationship('evento', 'nome')
                     ->required(),
-                Forms\Components\TextInput::make('reservado_por')
-                    ->numeric(),
-                Forms\Components\TextInput::make('codigo')
+                Forms\Components\TextInput::make('numero_mesa')
                     ->required(),
-                Forms\Components\TextInput::make('lugares')
+
+                Forms\Components\TextInput::make('quantidade_cadeiras')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->default(0),
                 Forms\Components\TextInput::make('preco')
                     ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('area')
-                    ->required(),
-                Forms\Components\TextInput::make('status_pagamento')
-                    ->required(),
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\Select::make('localizacao')
+                    ->options([
+                        '2°Andar' => '2° Andar',
+                        'Térreo' => 'Térreo',
+                    ])
+                    ->nullable(),
+                Forms\Components\Select::make('area')
+                    ->options([
+                        'coberta' => 'Coberta',
+                        'descoberta' => 'Descoberta',
+                    ])
+                    ->nullable(),
+
             ]);
     }
 
@@ -49,23 +62,25 @@ class MesaEventoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('evento.id')
+                Tables\Columns\TextColumn::make('evento_id')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('reservado_por')
+                Tables\Columns\ImageColumn::make('url_foto'),
+                Tables\Columns\TextColumn::make('quantidade_cadeiras')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('codigo')
+                Tables\Columns\TextColumn::make('localizacao')
+                    ->label('Localização')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('lugares')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('preco')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('area')
+                    ->label('Área')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status_pagamento')
+                Tables\Columns\TextColumn::make('numero_mesa')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -75,6 +90,10 @@ class MesaEventoResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('evento.nome')
+                    ->label('Evento')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -99,9 +118,9 @@ class MesaEventoResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMesaEventos::route('/'),
-            'create' => Pages\CreateMesaEvento::route('/create'),
-            'edit' => Pages\EditMesaEvento::route('/{record}/edit'),
+            'index' => Pages\ListMesas::route('/'),
+            'create' => Pages\CreateMesa::route('/create'),
+            'edit' => Pages\EditMesa::route('/{record}/edit'),
         ];
     }
 }
