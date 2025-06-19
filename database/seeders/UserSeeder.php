@@ -50,7 +50,6 @@ class UserSeeder extends Seeder
             ["name" => "Cynthia Maria Mello", "email" => "cynthiamlmello@gmail.com"],
             ["name" => "Joana Paula N. Calaça", "email" => "joanacalaca@gmail.com"],
             ["name" => "Amanda Letícia Amaral Madeira e Silva", "email" => "amanda.madeira@gmail.com"],
-            ["name" => "Amanda Letícia Amaral Madeira e Silva", "email" => "amanda.madeira@gmail.com"],
             ["name" => "Debora Menezes de Figueiredo", "email" => "figueiredod2013@gmail.com"],
             ["name" => "Sheila Spagnol de Oliveira Salvaterra", "email" => "sheilaspagnol@hotmail.com"],
             ["name" => "Deliane Maria Ribeiro", "email" => "deliane.ribeiro@gmail.com"],
@@ -63,7 +62,6 @@ class UserSeeder extends Seeder
             ["name" => "Ingrid Matos de Araújo Góes", "email" => "ingridgoes1@gmail.com"],
             ["name" => "Aline Cristina Pimenta Siqueira", "email" => "alinecps87@gmail.com"],
             ["name" => "Priscila Moraes Figueiredo", "email" => "priscilamoraesfigueiredo@gmail.com"],
-            ["name" => "Luiza Veltem Chamone", "email" => "luveltem@hotmail.com"],
             ["name" => "Luiza Veltem Chamone", "email" => "luveltem@hotmail.com"],
             ["name" => "Stephanie Raysa Iltis Raposo", "email" => "stephanieiltis@yahoo.com.br"],
             ["name" => "Pollyanna A. Soares Barcelos", "email" => "pollyannabarcellos4@gmail.com"],
@@ -94,13 +92,11 @@ class UserSeeder extends Seeder
             ["name" => "Bárbara Lizandra Nascimento", "email" => "barbaralizandra@gmail.com"],
             ["name" => "Camila Breder Gondim", "email" => "camilabreder91@gmail.com"],
             ["name" => "Fernanda Helena Amaral de Oliveira", "email" => "fe107107@gmail.com"],
-            ["name" => "Fernanda Helena Amaral de Oliveira", "email" => "fe107107@gmail.com"],
             ["name" => "Ana Carolina Cosse Andrade", "email" => "carolcosse@yahoo.com.br"],
             ["name" => "Gabriela Resende da Silva", "email" => "gaby-rds@hotmail.com"],
             ["name" => "Camila de Souza Menezes", "email" => "milasmenezes@yahoo.com.br"],
             ["name" => "Danielle Maciel Velloso Leão Vidigal", "email" => "daniellevidigal@hotmail.com"],
             ["name" => "Priscilla Lazzarini Pereira", "email" => "priscilla.lazzarini@gmail.com"],
-            ["name" => "Mariana Peixoto Calijorne", "email" => "mari.peixotoc@hotmail.com"],
             ["name" => "Rafaelle Modesto Alves", "email" => "rafa.modesto03@gmail.com"],
             ["name" => "Mariana Peixoto Calijorne", "email" => "mari.peixotoc@hotmail.com"],
             ["name" => "Marina Parreira Guimarães", "email" => "marimap@hotmail.com"],
@@ -117,8 +113,6 @@ class UserSeeder extends Seeder
             ["name" => "Fernanda de Oliveira Coral", "email" => "nandacoral20@hotmail.com"],
             ["name" => "Katty Sierra Barrios", "email" => "kasb1094@hotmail.com"],
             ["name" => "Camila Salomão Sales e Silva", "email" => "camilasalomao10@hotmail.com"],
-            ["name" => "Camila Salomão Sales e Silva", "email" => "camilasalomao10@hotmail.com"],
-            ["name" => "Sara de Souza Oliveira", "email" => "sara@endolifemed.com.br"],
             ["name" => "Sara de Souza Oliveira", "email" => "sara@endolifemed.com.br"],
             ["name" => "Paloma Almeida Diniz", "email" => "palomadinizfisio@gmail.com"],
             ["name" => "Nadja Sherrine Soares Godoy Paiva Oliveira", "email" => "nadjasherrine@yahoo.com.br"],
@@ -147,7 +141,6 @@ class UserSeeder extends Seeder
             ["name" => "Luiz Henrique Viana Duarte", "email" => "luizhduarte2010@hotmail.com"],
             ["name" => "Frederico Correa Nogueira", "email" => "fcnogueira29@gmail.com"],
             ["name" => "Gilson Angelo Zanetti Gonçalves", "email" => "gilsonzanetti@yahoo.com.br"],
-            ["name" => "Bruno Lagares de Andrade ", "email" => "brumaq@yahoo.com"],
             ["name" => "Bruno Lagares de Andrade ", "email" => "brumaq@yahoo.com"],
             ["name" => "Hugo Antonio P. Teixeira", "email" => "hugo@prismaindustrial.com.br"],
             ["name" => "Marcelo San Severino Batista de Castro", "email" => "marcelosancastro@yahoo.com.br"],
@@ -182,7 +175,6 @@ class UserSeeder extends Seeder
             ["name" => "Bruno Gomes Guimaraes", "email" => "Bruno.Guimaraes1987@gmail.com"],
             ["name" => "Daniel Dias Oliveira", "email" => "danieldiasoliveira@gmail.com"],
             ["name" => "Michel Angelo Martins Silva", "email" => "michel.martins80@gmail.com"],
-            ["name" => "Michel Angelo Martins Silva", "email" => "michel.martins80@gmail.com"],
             ["name" => "Paulo Vinicius Neves Ribas", "email" => "figueiredod@globo.com"],
             ["name" => "Clemilson Fernandes Salvaterra", "email" => "clemilson.salvaterra@gmail.com"],
             ["name" => "Fabio Luiz Firmino Leles", "email" => "fabioleles@yahoo.com.br"],
@@ -195,7 +187,6 @@ class UserSeeder extends Seeder
             ["name" => "Gabriel Paiva Campos", "email" => "tinpaiva@hotmail.com"],
             ["name" => "Higor Gustavo Romualdo Rola", "email" => "higorromualdo51@gmail.com"],
             ["name" => "Luiz dos Reis Borges Junior", "email" => "luizreisborges@gmail.com"],
-            ["name" => "Wagner Jeronimo Junior", "email" => "wagner.jeronimo@waybarcon.com"],
             ["name" => "Wagner Jeronimo Junior", "email" => "wagner.jeronimo@waybarcon.com"],
             ["name" => "Ulisses Alves de Oliveira", "email" => "ulissesalvesoliveira@hotmail.com"],
             ["name" => "Luiz Fernando Martins Dornellas", "email" => "luizmartinsdornellas@gmail.com"],
@@ -223,7 +214,6 @@ class UserSeeder extends Seeder
             ["name" => "Guilherme Ricardo Costa", "email" => "GUILHERMERCOZ@HOTMAIL.COM"],
             ["name" => "Rodrigo Bavaresco Brigatto", "email" => "rodrigobrigatto@gmail.com"],
             ["name" => "Victor Prates Timo", "email" => "victorprates.geo@gmail.com"],
-            ["name" => "Victor Prates Timo", "email" => "victorprates.geo@gmail.com"],
             ["name" => "Thales Eduardo Barboza", "email" => "thalisideal@gmail.com"],
             ["name" => "André Matheus Rodrigues", "email" => "andre_matheus12@outlook.com"],
             ["name" => "Filipe Gustavo Lopes", "email" => "filipeglopes@hotmail.com"],
@@ -231,7 +221,6 @@ class UserSeeder extends Seeder
             ["name" => "Wellington Pereira", "email" => "well230782@gmail.com"],
             ["name" => "André de Abreu Andrade", "email" => "andredeabreu83@gmail.com"],
             ["name" => "Carlos Augusto Vidotti Castro Correa", "email" => "carlosvidotticastrocorrea@gmail.com"],
-            ["name" => "André de Abreu Andrade", "email" => "andredeabreu83@gmail.com"],
             ["name" => "Túlio Parreira Camargos Guimarães", "email" => "tulio.camargos@gmail.com"],
             ["name" => "Yuri Philipe Motta dos Santos", "email" => "yuripmotta@gmail.com"],
             ["name" => "João Márcio Brandão Maciel", "email" => "jmacieltech@gmail.com"],
@@ -246,8 +235,6 @@ class UserSeeder extends Seeder
             ["name" => "Ronaldo César Lima Campos", "email" => "ronaldocesarcampos@hotmail.com"],
             ["name" => "Andres Felipe Cuadros Mateus", "email" => "pipemateus@gmail.com"],
             ["name" => "Cirano Navarro de Almeida Passos", "email" => "Cirano.passos@hotmail.com"],
-            ["name" => "Cirano Navarro de Almeida Passos", "email" => "Cirano.passos@hotmail.com"],
-            ["name" => "Bruno Eduardo Alves de Souza", "email" => "bruno@endolifemed.com.br"],
             ["name" => "Bruno Eduardo Alves de Souza", "email" => "bruno@endolifemed.com.br"],
             ["name" => "Arthur Antonio do Santos e Santos", "email" => "endobraxarthur@gmail.com"],
             ["name" => "Fabrício de Paiva Oliveira", "email" => "fabriciopaiva0@gmail.com"],
@@ -270,7 +257,9 @@ class UserSeeder extends Seeder
             ["name" => "Peterson Rodrigues Pedrosa", "email" => "petersonpedrosa@gmail.com"],
         ];
 
-        foreach ($users as $user) {
+        $uniqueUsers = array_unique($users, SORT_REGULAR);
+
+        foreach ($uniqueUsers as $user) {
             DB::table('users')->insert([
                 'name' => $user['name'],
                 'email' => $user['email'],
@@ -281,3 +270,4 @@ class UserSeeder extends Seeder
         }
     }
 }
+
