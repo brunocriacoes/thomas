@@ -119,3 +119,13 @@ php artisan db:seed --class=DatabaseSeeder
 ~~~
 php artisan migrate:fresh --seed
 ~~~
+
+### laravel permission
+https://spatie.be/docs/laravel-permission/v6/installation-laravel
+https://youtu.be/6oABAUbJb6k?si=gmf8soX8nLq6yLe0
+~~~
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+php artisan optimize:clear
+php artisan migrate
+~~~
