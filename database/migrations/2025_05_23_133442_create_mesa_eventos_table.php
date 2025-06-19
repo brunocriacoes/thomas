@@ -15,11 +15,12 @@ return new class extends Migration
             $table->integer('quantidade_cadeiras')->default(0);
             $table->enum('localizacao', ['2°Andar', 'Térreo'])->nullable();
             $table->decimal('preco', 10, 2)->default(0.00);
-            $table->enum('area', ['coberta', 'descoberta'])->nullable();
+            $table->unsignedBigInteger('area_id');
             $table->string('numero_mesa');
             $table->timestamps();
 
             $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
+            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
         });
     }
 

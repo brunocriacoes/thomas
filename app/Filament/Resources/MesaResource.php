@@ -48,12 +48,10 @@ class MesaResource extends Resource
                         'Térreo' => 'Térreo',
                     ])
                     ->nullable(),
-                Forms\Components\Select::make('area')
-                    ->options([
-                        'coberta' => 'Coberta',
-                        'descoberta' => 'Descoberta',
-                    ])
-                    ->nullable(),
+                Forms\Components\Select::make('area_id')
+                    ->relationship('area', 'nome')
+                    ->label('Área')
+                    ->required(),
 
             ]);
     }
@@ -76,7 +74,7 @@ class MesaResource extends Resource
                 Tables\Columns\TextColumn::make('preco')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('area')
+                Tables\Columns\TextColumn::make('area.nome')
                     ->label('Área')
                     ->sortable()
                     ->searchable(),

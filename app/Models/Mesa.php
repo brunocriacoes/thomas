@@ -25,4 +25,9 @@ class Mesa extends Model
     {
         return $this->belongsTo(Evento::class);
     }
+    
+    public function area()
+    {
+        return $this->belongsTo(\App\Models\Area::class, 'area_id');
+    }
 }
