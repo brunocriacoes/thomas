@@ -129,3 +129,10 @@ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvid
 php artisan optimize:clear
 php artisan migrate
 ~~~
+
+### rota para pagamento
+http://127.0.0.1:8000/admin/pagamento-ingresso?ingresso_id=1
+
+### api
+
+https://github.com/mercadopago/sdk-php

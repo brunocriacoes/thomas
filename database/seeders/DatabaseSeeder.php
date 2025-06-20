@@ -10,6 +10,7 @@ use Database\Seeders\EscolaSeeder;
 use Database\Seeders\EventoSeeder;
 use Database\Seeders\AreaSeeder;
 use Database\Seeders\MesaSeeder;
+use Database\Seeders\AlunoSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
             AreaSeeder::class,
             MesaSeeder::class,
             UserSeeder::class,
+            AlunoSeeder::class,
         ]);
     }
 }
