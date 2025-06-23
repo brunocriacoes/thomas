@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->integer('socializacao_hora')->nullable();
             $table->decimal('socializacao_preco_hora', 8, 2)->nullable();
 
-            $table->unsignedBigInteger('ecola_id')->nullable();
+            $table->unsignedBigInteger('escola_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('aluno_id')->nullable();
 
@@ -27,7 +27,7 @@ return new class extends Migration {
 
             $table->timestamps();
 
-            $table->foreign('ecola_id')->references('id')->on('ecolas')->onDelete('set null');
+            $table->foreign('escola_id')->references('id')->on('escolas')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('set null');
         });
