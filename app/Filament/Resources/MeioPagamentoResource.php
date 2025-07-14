@@ -27,12 +27,24 @@ class MeioPagamentoResource extends Resource
                     ->relationship('escola', 'nome')
                     ->required()
                     ->columnSpan(2),
-                Forms\Components\Select::make('tipos')
+                Forms\Components\TextInput::make('a_partir')
+                    ->label('A partir')
+                    ->numeric()
+                    ->required(),
+                Forms\Components\Select::make('meio_pagamento')
                     ->options([
                         'pagseguro' => 'PagSeguro',
                         'asaas' => 'Asaas',
                         'zoop' => 'Zoop',
                         'pagar-me' => 'Pagar.me',
+                        'mercado_pago' => 'Mercado Pago',
+                    ])
+                    ->required(),
+                Forms\Components\Select::make('tipo_pagamento')
+                    ->options([
+                        'PIX' => 'PIX',
+                        'CREDIT_CARD' => 'CREDIT_CARD',
+                        'BOLETO' => 'BOLETO',
                     ])
                     ->required(),
                 Forms\Components\Select::make('status')

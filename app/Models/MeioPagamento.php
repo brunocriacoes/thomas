@@ -13,10 +13,12 @@ class MeioPagamento extends Model
 
     protected $fillable = [
         'escola_id',
-        'tipos',
         'status',
         'chave',
         'codigo',
+        'meio_pagamento',
+        'tipo_pagamento',
+        'a_partir',
     ];
 
     /**

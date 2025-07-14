@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('meios_pagamentos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('escola_id');
-            $table->enum('tipos', ['pagseguro', 'asaas', 'zoop', 'pagar-me']);
+            $table->enum('meio_pagamento', ['pagseguro', 'asaas', 'zoop', 'pagar-me', 'mercado_pago']);
+            $table->enum('tipo_pagamento', ['PIX', 'CREDIT_CARD', 'BOLETO']);
             $table->enum('status', ['produção', 'desenvolvimento']);
+            $table->integer('a_partir');
             $table->string('chave')->nullable();
             $table->string('codigo')->nullable();
             $table->timestamps();
