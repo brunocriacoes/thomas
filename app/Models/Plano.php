@@ -13,14 +13,11 @@ class Plano extends Model
 
     protected $fillable = [
         'periodo',
-        'turno_hora',
-        'turno_preco_hora',
-        'socializacao_hora',
-        'socializacao_preco_hora',
-        'ecola_id',
+        'escola_id',
         'user_id',
         'aluno_id',
         'valor',
+        'valor_socializacao',
         'status',
         'observacao',
     ];

@@ -16,28 +16,30 @@ return new class extends Migration
             $table->enum('estado_civil', ['solteiro', 'casado', 'divorciado', 'viuvo'])->nullable();
             $table->enum('parentesco', ['pai', 'mãe', 'tutor', 'outro'])->nullable();
             $table->enum('status', ['ativo', 'inativo', 'suspenso'])->default('ativo');
-            $table->unsignedBigInteger('escola_id')->nullable();
-            $table->foreign('escola_id')->references('id')->on('escolas')->onDelete('set null');
+            // $table->unsignedBigInteger('escola_id')->nullable();
+            // $table->foreign('escola_id')->references('id')->on('escolas')->onDelete('set null');
             $table->string('cpf', 14)->nullable();
-            $table->string('rg')->nullable();
+            // $table->string('rg')->nullable();
             $table->string('endereco')->nullable();
             $table->string('numero')->nullable();
             $table->string('bairro')->nullable();
             $table->string('cidade')->nullable();
             $table->string('estado')->nullable();
             $table->string('cep', 9)->nullable();
-            $table->string('nacionalidade')->nullable();
-            $table->string('profissao')->nullable();
+            // $table->string('nacionalidade')->nullable();
+            // $table->string('profissao')->nullable();
             $table->text('observacoes')->nullable();
-            $table->string('cargo')->nullable();
+            // $table->string('cargo')->nullable();
+            // $table->string('tipo')->nullable();
+            // $table->string('cargo_nome')->nullable();
         });
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['escola_id']);
-            $table->dropColumn('escola_id');
+            // $table->dropForeign(['escola_id']);
+            // $table->dropColumn('escola_id');
             $table->dropColumn([
                 'telefone',
                 'foto',
@@ -46,17 +48,19 @@ return new class extends Migration
                 'parentesco',
                 'status',
                 'cpf',
-                'rg',
+                // 'rg',
                 'endereco',
                 'numero',
                 'bairro',
                 'cidade',
                 'estado',
                 'cep',
-                'nacionalidade',
-                'profissao',
+                // 'nacionalidade',
+                // 'profissao',
                 'observacoes',
-                'cargo'
+                // 'tipo',
+                // 'cargo_nome',
+                // 'cargo'
             ]);
         });
     }

@@ -10,18 +10,14 @@ return new class extends Migration {
         Schema::create('planos', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('periodo', ['manha', 'tarde'])->nullable();
-            $table->integer('turno_hora')->nullable();
-            $table->decimal('turno_preco_hora', 8, 2)->nullable();
-
-            $table->integer('socializacao_hora')->nullable();
-            $table->decimal('socializacao_preco_hora', 8, 2)->nullable();
+            $table->enum('periodo', ['manha', 'tarde', 'socializacao'])->nullable();
 
             $table->unsignedBigInteger('escola_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('aluno_id')->nullable();
 
             $table->decimal('valor', 10, 2)->default(0);
+            $table->decimal('valor_socializacao', 10, 2)->default(0);
             $table->string('status')->default('ativo');
             $table->text('observacao')->nullable();
 

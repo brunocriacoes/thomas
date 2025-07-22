@@ -44,12 +44,12 @@ class DatabaseSeeder extends Seeder
         $admin->assignRole($role);
 
         $this->call([
-            EscolaSeeder::class,
-            EventoSeeder::class,
-            AreaSeeder::class,
-            MesaSeeder::class,
-            UserSeeder::class,
-            AlunoSeeder::class,
+            // EscolaSeeder::class,
+            // EventoSeeder::class,
+            // AreaSeeder::class,
+            // MesaSeeder::class,
+            // UserSeeder::class,
+            // AlunoSeeder::class,
         ]);
     }
 }

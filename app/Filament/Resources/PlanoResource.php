@@ -25,33 +25,17 @@ class PlanoResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('escola_id')
+                    ->relationship('escola', 'nome')
+                    ->nullable()
+                    ->columnSpan(2),
                 Forms\Components\Select::make('periodo')
                     ->options([
                         'manha' => 'Manhã',
                         'tarde' => 'Tarde',
+                        'socializacao' => 'Socialização',
                     ])
                     ->required(),
-                Forms\Components\TextInput::make('valor')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\TextInput::make('turno_hora')
-                    ->numeric(),
-                Forms\Components\TextInput::make('turno_preco_hora')
-                    ->numeric(),
-                Forms\Components\TextInput::make('socializacao_hora')
-                    ->numeric(),
-                Forms\Components\TextInput::make('socializacao_preco_hora')
-                    ->numeric(),
-                Forms\Components\Select::make('ecola_id')
-                    ->relationship('escola', 'nome')
-                    ->nullable(),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->nullable(),
-                Forms\Components\Select::make('aluno_id')
-                    ->relationship('aluno', 'nome')
-                    ->nullable(),
                 Forms\Components\Select::make('status')
                     ->options([
                         'ativo' => 'Ativo',
@@ -60,6 +44,20 @@ class PlanoResource extends Resource
                         'cancelado' => 'Cancelado',
                     ])
                     ->required(),
+                Forms\Components\TextInput::make('valor')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('valor_socializacao')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->nullable(),
+                Forms\Components\Select::make('aluno_id')
+                    ->relationship('aluno', 'nome')
+                    ->nullable(),
                 Forms\Components\RichEditor::make('observacao')
                     ->columnSpanFull(),
             ]);
